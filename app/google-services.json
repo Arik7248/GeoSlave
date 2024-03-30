@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "968224811036",
+    "project_id": "geoslave-489c1",
+    "storage_bucket": "geoslave-489c1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968224811036:android:d246d841a116717527d7d9",
+        "android_client_info": {
+          "package_name": "com.example.geoslave"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoB-94foKvRL_UPRE34EPizdA5OiReZ6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

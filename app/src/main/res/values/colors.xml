@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="backblack">#110f0f</color>
+    <color name="txtcolor">#ff7514</color>
+    <color name="gray">#9f9b9b</color>
+    <color name="dartmouth">#00703c</color>
+    <color name="fon">#1c1b20</color>
+    <color name="cardfon">#424242</color>
+</resources>

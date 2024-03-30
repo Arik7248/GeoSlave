@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FormulaActivity"
+    android:orientation="vertical"
+    android:background="@color/fon">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/black">
+
+        <ImageView
+            android:id="@+id/InfoBT"
+            android:layout_width="30dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/info"
+            android:minWidth="44dp"
+            android:minHeight="44dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:backgroundTint="@color/black"/>
+    <ImageView
+        android:id="@+id/FormulaImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/heron"
+        android:layout_gravity="center"/>
+    <ImageView
+        android:layout_marginTop="4dp"
+        android:id="@+id/FormulaText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/heronform"
+        android:layout_gravity="center" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:backgroundTint="@color/black"
+        android:layout_marginTop="3dp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="S = "
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/editText"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <EditText
+            android:id="@+id/editText"
+            style="@style/SquareEditTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLength="80"
+            android:maxLines="1"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="a = "
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <EditText
+            android:id="@+id/editText2"
+            style="@style/SquareEditTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:maxLines="1"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="b = "
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <EditText
+            android:id="@+id/editText3"
+            style="@style/SquareEditTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:maxLines="1"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="@+id/editText2"
+            app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="c = "
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <EditText
+            android:id="@+id/editText4"
+            style="@style/SquareEditTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:maxLines="1"
+            android:minWidth="25dp"
+            android:minHeight="25dp"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="@+id/editText3"
+            app:layout_constraintTop_toBottomOf="@+id/editText3" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:minWidth="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Answer"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:background="@drawable/answer_background"
+        android:layout_gravity="center_horizontal"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Solve"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="@color/txtcolor"/>
+</LinearLayout>

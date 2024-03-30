@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/fon">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/black">
+
+        <ImageButton
+            android:id="@+id/LogOut"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/logout"
+            android:foreground="@drawable/selector_imgs"
+            app:layout_constraintBottom_toTopOf="@+id/textView6"
+            app:layout_constraintEnd_toEndOf="@+id/textView6"
+            app:layout_constraintStart_toStartOf="@+id/textView6"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginBottom="6dp"
+            android:text="Sign Out"
+            android:textColor="@color/txtcolor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LogOut" />
+        <!--        <ImageView-->
+        <!--            android:id="@+id/imageView"-->
+        <!--            android:layout_width="32dp"-->
+        <!--            android:layout_height="32dp"-->
+        <!--            android:layout_marginEnd="16dp"-->
+        <!--            android:background="@drawable/filter"-->
+        <!--            android:foreground="@drawable/selector_imgs"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:backgroundTint="@color/black"
+        android:layout_marginTop="2dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Favourites"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/white"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/emptyLikes"
+        android:layout_width="match_parent"
+        android:layout_height="145dp"
+        android:background="@drawable/borders"
+        android:layout_marginStart="5dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="155dp"
+            android:src="@drawable/emptylikes"
+            app:layout_constraintBottom_toTopOf="@+id/textView5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:text="Like some formulas to add them in favourites!"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginStart="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerLikes"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Triangles"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/white"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Area formulas"
+        android:textSize="16dp"
+        android:textColor="@color/white"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:backgroundTint="@color/black"
+        android:layout_marginTop="2dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginStart="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerTriangleS"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Other formulas"
+        android:textSize="16dp"
+        android:textColor="@color/white"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:backgroundTint="@color/black"
+        android:layout_marginTop="2dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginStart="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerTriangleOthers"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Quadrilaterals"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/white"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:backgroundTint="@color/black"
+        android:layout_marginTop="2dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginStart="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerQuadrilateral"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Polygons"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/white"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:backgroundTint="@color/black"
+        android:layout_marginTop="2dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginStart="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerPolygon"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Circles"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/white"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:backgroundTint="@color/black"
+        android:layout_marginTop="2dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginStart="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerCircle"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+    <Button
+        android:id="@+id/temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/txtcolor"
+        android:text="temp button"/>
+</LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="NoUnderlineEditText">
+        <item name="android:background">@null</item>
+    </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:navigationBarColor">@color/black</item>
+    </style>
+    <style name="SquareEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/square_edittext_background</item>
+    </style>
+</resources>

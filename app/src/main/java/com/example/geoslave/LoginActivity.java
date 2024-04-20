@@ -6,9 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -47,7 +51,53 @@ public class LoginActivity extends AppCompatActivity {
         Window window = getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.black));
 
+        TextView signup = findViewById(R.id.signup);
+        Button signin = findViewById(R.id.signin);
+        EditText login_email = findViewById(R.id.name);
+        EditText login_password = findViewById(R.id.pass);
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent tosignup = new Intent(LoginActivity.this,SignInActivity.class);
+                startActivity(tosignup);
+            }
+        });
+        signin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = login_email.getText().toString().trim();
+                String password = login_password.getText().toString().trim();
 
+                if (TextUtils.isEmpty(email)) {
+                    login_email.setError("Enter email address");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(password)) {
+                    login_password.setError("Enter password");
+                    return;
+                }
+
+                // Authenticate user with email and password
+                auth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // Sign in success
+                                    Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                    finish();
+                                } else {
+                                    // Sign in failed
+                                    Toast.makeText(LoginActivity.this, "Authentication failed. " + task.getException().getMessage(),
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            }
+        });
+        //Google
         googleAuth = findViewById(R.id.loginBT);
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -60,17 +110,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (auth.getCurrentUser() != null) {
-                    // User is already signed in, sign them out first
                     signOut();
                 } else {
-                    // User is not signed in, start sign-in flow
                     googleSignIn();
                 }
             }
         });
         if (auth.getCurrentUser() != null) {
-            // User is already signed in, sign them out first
-
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         }
@@ -78,11 +124,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private void googleSignIn() {
         if (auth.getCurrentUser() != null) {
-            // User is already signed in, sign them out first
             auth.signOut();
             startGoogleSignInIntent();
         } else {
-            // User is not signed in, start the sign-in flow directly
             startGoogleSignInIntent();
         }
     }
@@ -97,8 +141,6 @@ public class LoginActivity extends AppCompatActivity {
         mGoogleSignInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                // After signing out from both Firebase and Google sign-in client,
-                // start the Google sign-in flow again
                 googleSignIn();
             }
         });
@@ -125,13 +167,6 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-//                            FirebaseUser user = auth.getCurrentUser();
-//                            HashMap<String, Object> map = new HashMap<>();
-//                            map.put("id", user.getUid());
-//                            map.put("name", user.getDisplayName());
-//                            map.put("profile", user.getPhotoUrl().toString());
-//                            database.getReference().child("users").child(user.getUid()).setValue(map);
-
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                         } else {

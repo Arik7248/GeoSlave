@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         if(LikedFormulas.isEmpty()) {
             recyclerLiked.setVisibility(View.GONE);
             emptyLikes.setVisibility(View.VISIBLE);
+            emptyLikes.setVisibility(View.GONE);
         }
         else {
             recyclerLiked.setVisibility(View.VISIBLE);
@@ -106,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //FirebaseAuth.getInstance().signOut();
                 showSignOutConfirmationDialog();
-                finish();
             }
         });
         //liked

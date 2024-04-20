@@ -74,7 +74,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
             }
             if(MainActivity.LikedFormulas.isEmpty()) {
                 recyclerView.setVisibility(View.GONE);
-                emptyFavs.setVisibility(View.VISIBLE);
             }
             else {
                 recyclerView.setVisibility(View.VISIBLE);

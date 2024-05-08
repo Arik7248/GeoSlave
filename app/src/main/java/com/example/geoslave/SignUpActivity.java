@@ -8,23 +8,19 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class SignInActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
     private EditText rg_username, rg_email, rg_password, rg_repassword;
     private Button rg_signup;
-    private FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +28,7 @@ public class SignInActivity extends AppCompatActivity {
         Window window = getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.black));
 
-        auth = FirebaseAuth.getInstance();
+        LoginActivity.auth = FirebaseAuth.getInstance();
 
         rg_email = findViewById(R.id.mail);
         rg_password = findViewById(R.id.pass1);
@@ -49,7 +45,7 @@ public class SignInActivity extends AppCompatActivity {
 
                 if ( TextUtils.isEmpty(emaill) ||
                         TextUtils.isEmpty(Password) || TextUtils.isEmpty(cPassword)) {
-                    Toast.makeText(SignInActivity.this, "Please Enter Valid Information", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Please Enter Valid Information", Toast.LENGTH_SHORT).show();
                 } else if (!emaill.matches(emailPattern)) {
                     rg_email.setError("Type A Valid Email Here");
                 } else if (Password.length() < 6) {
@@ -58,7 +54,7 @@ public class SignInActivity extends AppCompatActivity {
                     rg_password.setError("The Passwords Don't Match");
                 } else {
                     // Show progress dialog here
-                    auth.createUserWithEmailAndPassword(emaill, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    LoginActivity.auth.createUserWithEmailAndPassword(emaill, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             // Dismiss the progress dialog here
@@ -66,25 +62,25 @@ public class SignInActivity extends AppCompatActivity {
                                 // Registration success
                                 String id = task.getResult().getUser().getUid();
                                 // Proceed with email verification
-                                auth.getCurrentUser().sendEmailVerification()
+                                LoginActivity.auth.getCurrentUser().sendEmailVerification()
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> emailTask) {
                                                 if (emailTask.isSuccessful()) {
                                                     // Email verification sent
-                                                    Toast.makeText(SignInActivity.this, "Verification email sent.", Toast.LENGTH_SHORT).show();
-                                                    Intent intent = new Intent(SignInActivity.this, LoginActivity.class);
+                                                    Toast.makeText(SignUpActivity.this, "Verification email sent.", Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                                                     startActivity(intent);
                                                     finish();
                                                 } else {
                                                     // Failed to send email verification
-                                                    Toast.makeText(SignInActivity.this, "Failed to send verification email.", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(SignUpActivity.this, "Failed to send verification email.", Toast.LENGTH_SHORT).show();
                                                 }
                                             }
                                         });
                             } else {
                                 // Registration failed
-                                Toast.makeText(SignInActivity.this, "Registration failed. " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUpActivity.this, "Registration failed. " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

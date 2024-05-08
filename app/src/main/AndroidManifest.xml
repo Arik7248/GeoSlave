@@ -16,7 +16,7 @@
         android:theme="@style/Theme.GeoSlave"
         tools:targetApi="31">
         <activity
-            android:name=".SignInActivity"
+            android:name=".SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"

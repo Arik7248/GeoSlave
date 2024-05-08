@@ -29,12 +29,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
-import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 
 public class LoginActivity extends AppCompatActivity {
     ImageButton googleAuth;
@@ -42,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     public static  FirebaseDatabase database;
     public static GoogleSignInClient mGoogleSignInClient;
     public static  FirebaseUser user;
+
     int RC_SIGN_IN = 20;
 
     @Override
@@ -51,6 +47,12 @@ public class LoginActivity extends AppCompatActivity {
         Window window = getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.black));
 
+        auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() != null && auth.getCurrentUser().isEmailVerified()) {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
         TextView signup = findViewById(R.id.signup);
         Button signin = findViewById(R.id.signin);
         EditText login_email = findViewById(R.id.name);
@@ -58,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent tosignup = new Intent(LoginActivity.this,SignInActivity.class);
+                Intent tosignup = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(tosignup);
             }
         });
@@ -77,7 +79,10 @@ public class LoginActivity extends AppCompatActivity {
                     login_password.setError("Enter password");
                     return;
                 }
-
+                if (!FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
+                    Toast.makeText(LoginActivity.this, "Mail is not verified", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 // Authenticate user with email and password
                 auth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -90,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                                     finish();
                                 } else {
                                     // Sign in failed
-                                    Toast.makeText(LoginActivity.this, "Authentication failed. " + task.getException().getMessage(),
+                                    Toast.makeText(LoginActivity.this, "Failed. " + task.getException().getMessage(),
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -99,12 +104,13 @@ public class LoginActivity extends AppCompatActivity {
         });
         //Google
         googleAuth = findViewById(R.id.loginBT);
-        auth = FirebaseAuth.getInstance();
+
         database = FirebaseDatabase.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail().build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
         user = auth.getCurrentUser();
         googleAuth.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,10 +122,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-        if (auth.getCurrentUser() != null) {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-        }
+
     }
 
     private void googleSignIn() {
@@ -169,6 +172,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
+                            finish();
                         } else {
                             Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                         }

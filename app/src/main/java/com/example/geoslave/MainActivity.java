@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         userID = LoginActivity.auth.getCurrentUser().getUid();
         fStore = FirebaseFirestore.getInstance();
         documentReference = fStore.collection("users")
-                .document(userID);
+                .document(LoginActivity.auth.getCurrentUser().getEmail());
         Liked = new HashMap<>();
         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -73,9 +74,12 @@ public class MainActivity extends AppCompatActivity {
                     Map<String, Object> data = documentSnapshot.getData();
                     if (data != null && data.containsKey("LikedFormulas")) {
                         // Get the LikedFormulas from the document data
-                        LikedFormulas = (List<Formula>) data.get("LikedFormulas");
+                        LikedFormulas = ((List<Map>) data.get("LikedFormulas")).stream().map(el->
+                                new Formula((String) el.get("name"),Math.toIntExact((Long) el.get("image")),
+                                        Math.toIntExact((Long) el.get("textSize")))).collect(Collectors.toList());
+
                         // Now LikedFormulas has the data from Firestore
-                        Log.d("TAG", "LikedFormulas: " + MainActivity.LikedFormulas);
+                        Log.d("TAG", "LikedFormulas: " + LikedFormulas);
                     } else {
                         Log.d("TAG", "LikedFormulas not found in document");
                     }
@@ -156,15 +160,15 @@ public class MainActivity extends AppCompatActivity {
         //polygons
         //circle
         RecyclerView recyclerCircle = findViewById(R.id.recyclerCircle);
-        CircleFormulas.add(new Formula("Area Of A Circle Sector",R.drawable.shrjanisektor,14));
-        CircleFormulas.add(new Formula("Area Of A Circle Segment",R.drawable.shrjanisegment,14));
-        CircleFormulas.add(new Formula("Height Of A Circle Segment",R.drawable.shrjanisegmentibardz,13));
+        CircleFormulas.add(new Formula("Area Of A Circle Sector",R.drawable.shrjanisektor,13));
+        CircleFormulas.add(new Formula("Area Of A Circle Segment",R.drawable.shrjanisegment,12));
+        CircleFormulas.add(new Formula("Height Of A Circle Segment",R.drawable.shrjanisegmentibardz,11));
         Formulas.addAll(CircleFormulas);
         recyclerCircle.setAdapter(new CardAdapter(getApplicationContext(), CircleFormulas,(Vibrator)getSystemService(Context.VIBRATOR_SERVICE), recyclerLiked, emptyLikes));
         recyclerCircle.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         //circle
-        Button imageButton = findViewById(R.id.temp);
-        imageButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, FormulaActivity.class)));
+//        Button imageButton = findViewById(R.id.temp);
+//        imageButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, FormulaActivity.class)));
 
 
 
@@ -187,11 +191,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // Sign out the user
-                mAuth.signOut();
+                LoginActivity.auth.signOut();
                 LoginActivity.mGoogleSignInClient.signOut();
                 // Start LoginActivity
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                finish(); // Finish MainActivity
+                // Finish MainActivity
+                finish();
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

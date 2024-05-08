@@ -1,6 +1,7 @@
 package com.example.geoslave.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
@@ -19,12 +20,14 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.geoslave.Formula;
+import com.example.geoslave.FormulaActivity;
 import com.example.geoslave.MainActivity;
 import com.example.geoslave.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.List;
+import android.content.Intent;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> {
 
@@ -52,6 +55,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull  MyViewHolder holder, int position) {
         holder.nameView.setText(formulas.get(position).getName());
         holder.imageView.setImageResource(formulas.get(position).getImage());
+        holder.imageView.setOnClickListener(view -> context.startActivity(new Intent(context, FormulaActivity.class)));
         holder.nameView.setTextSize(formulas.get(position).getTextSize());
         holder.imageButton.setOnClickListener(v -> {
             if (formulas.get(position).isLiked()){

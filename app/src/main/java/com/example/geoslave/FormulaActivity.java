@@ -103,7 +103,7 @@ public class FormulaActivity extends AppCompatActivity {
                 stack.push(new Fraction(Integer.parseInt(token), 1)); // Convert token to Fraction
             } else {
                 if (stack.isEmpty()) {
-                    Toast.makeText(ansTV.getContext(), "WTF", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ansTV.getContext(), "ERROR, IVALID DATA", Toast.LENGTH_LONG).show();
                     break;
                 }
                 Fraction b, a;
@@ -291,7 +291,13 @@ public class FormulaActivity extends AppCompatActivity {
                     try {
                         double number = Double.valueOf(mas[i]);
                         mas[i] = DoubleToFraction(number);
-                    }catch (Exception ignored){}
+                    }catch (Exception ignored){
+
+                    }
+//                    if ()
+//                    if (mas[0] + mas[1] > mas[2] && mas[1] + mas[2] > mas[0] && mas[0] + mas[2] > mas[1]){
+//
+//                    }
                     TempSTR = TempSTR.replaceAll(symb[i], mas[i]);
                 }
                 Fraction result = calculate(TempSTR);

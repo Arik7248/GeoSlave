@@ -55,7 +55,14 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull  MyViewHolder holder, int position) {
         holder.nameView.setText(formulas.get(position).getName());
         holder.imageView.setImageResource(formulas.get(position).getImage());
-        holder.imageView.setOnClickListener(view -> context.startActivity(new Intent(context, FormulaActivity.class)));
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, FormulaActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
         holder.nameView.setTextSize(formulas.get(position).getTextSize());
         holder.imageButton.setOnClickListener(v -> {
             if (formulas.get(position).isLiked()){

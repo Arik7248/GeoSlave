@@ -64,6 +64,10 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
             }
         });
         holder.nameView.setTextSize(formulas.get(position).getTextSize());
+        if (MainActivity.LikedFormulas.contains(formulas.get(position))){
+            formulas.get(position).setLiked(true);
+            holder.imageButton.setImageResource(R.drawable.heart_red);
+        }
         holder.imageButton.setOnClickListener(v -> {
             if (formulas.get(position).isLiked()){
                 formulas.get(position).setLiked(false);
@@ -80,7 +84,10 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
                 animateHeart(holder.imageButton);
                 VibrateDevice();
 
-                MainActivity.LikedFormulas.add(formulas.get(position));
+                if (!MainActivity.LikedFormulas.contains(formulas.get(position))){
+                    MainActivity.LikedFormulas.add(formulas.get(position));
+                }
+
 
             }
             if(MainActivity.LikedFormulas.isEmpty()) {
@@ -90,8 +97,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
                 recyclerView.setVisibility(View.VISIBLE);
                 emptyFavs.setVisibility(View.GONE);
             }
-            recyclerView.setAdapter(new LikeAdapter(context, MainActivity.LikedFormulas, recyclerView, emptyFavs));
 
+            MainActivity.Liked.remove("LikedFormulas");
             MainActivity.Liked.put("LikedFormulas",MainActivity.LikedFormulas);
             MainActivity.documentReference.set(MainActivity.Liked).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
@@ -105,6 +112,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
                     Log.d("TAG", "onFailure: "+e.toString());
                 }
             });
+            recyclerView.setAdapter(new LikeAdapter(context, MainActivity.LikedFormulas, recyclerView, emptyFavs));
         });
     }
 

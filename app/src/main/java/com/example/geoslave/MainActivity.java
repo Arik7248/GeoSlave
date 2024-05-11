@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         userID = LoginActivity.auth.getCurrentUser().getUid();
         fStore = FirebaseFirestore.getInstance();
         documentReference = fStore.collection("users")
-                .document(LoginActivity.auth.getCurrentUser().getEmail());
+                .document(FirebaseAuth.getInstance().getCurrentUser().getEmail());
         Liked = new HashMap<>();
         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -114,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //liked
-        recyclerLiked.setAdapter(new LikeAdapter(getApplicationContext(), MainActivity.LikedFormulas, recyclerLiked,emptyLikes));
-        recyclerLiked.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        //recyclerLiked.setAdapter(new LikeAdapter(getApplicationContext(), MainActivity.LikedFormulas, recyclerLiked,emptyLikes));
+        //recyclerLiked.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         //liked
         //TriangleS
         RecyclerView recyclerTriangleS = findViewById(R.id.recyclerTriangleS);
@@ -167,6 +167,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerCircle.setAdapter(new CardAdapter(getApplicationContext(), CircleFormulas,(Vibrator)getSystemService(Context.VIBRATOR_SERVICE), recyclerLiked, emptyLikes));
         recyclerCircle.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         //circle
+
+        recyclerLiked.setAdapter(new LikeAdapter(getApplicationContext(), MainActivity.LikedFormulas, recyclerLiked,emptyLikes));
+        recyclerLiked.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 //        Button imageButton = findViewById(R.id.temp);
 //        imageButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, FormulaActivity.class)));
 

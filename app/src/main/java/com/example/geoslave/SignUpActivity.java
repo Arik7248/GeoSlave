@@ -68,6 +68,8 @@ public class SignUpActivity extends AppCompatActivity {
                                             public void onComplete(@NonNull Task<Void> emailTask) {
                                                 if (emailTask.isSuccessful()) {
                                                     // Email verification sent
+                                                    LoginActivity.auth.signOut();
+                                                    LoginActivity.mGoogleSignInClient.signOut();
                                                     Toast.makeText(SignUpActivity.this, "Verification email sent.", Toast.LENGTH_SHORT).show();
                                                     Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                                                     startActivity(intent);

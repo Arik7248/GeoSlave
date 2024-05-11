@@ -1,6 +1,6 @@
 ERRORS
 
-1)Verification is not verifying
+0_0 1)Verification is not verifying
 2)All liked formulas in all users
 3)Liked formula's heart is not red
 

@@ -92,31 +92,31 @@ public class LikeAdapter extends RecyclerView.Adapter<LikeAdapter.ViewHolder>{
         holder.imageView.setImageResource(likedFormulas.get(position).getImage());
         holder.nameView.setTextSize(likedFormulas.get(position).getTextSize());
         holder.imageButton.setImageResource(R.drawable.heart_red);
-        holder.imageButton.setOnClickListener(v -> {
-            if (likedFormulas.get(position).isLiked()){
-                likedFormulas.get(position).setLiked(false);
-                holder.imageButton.setImageResource(R.drawable.heart_empty);
-
-                for (Formula likedCard: MainActivity.LikedFormulas ) {
-                    if (likedCard.getName().equals(MainActivity.Formulas.get(position).getName())){
-                        MainActivity.Formulas.get(position).setLiked(false);
-
-                        break;
-                    }
-                }
-                MainActivity.LikedFormulas.remove(likedFormulas.get(position));
-
-            }
-            if(MainActivity.LikedFormulas.isEmpty()) {
-                recyclerView.setVisibility(View.GONE);
-            }
-            else {
-                recyclerView.setVisibility(View.VISIBLE);
-                emptyFavs.setVisibility(View.GONE);
-            }
-            recyclerView.setAdapter(new LikeAdapter(context, MainActivity.LikedFormulas, recyclerView, emptyFavs));
-
-        });
+//        holder.imageButton.setOnClickListener(v -> {
+//            if (likedFormulas.get(position).isLiked()){
+//                likedFormulas.get(position).setLiked(false);
+//                holder.imageButton.setImageResource(R.drawable.heart_empty);
+//
+//                for (Formula likedCard: MainActivity.LikedFormulas ) {
+//                    if (likedCard.getName().equals(MainActivity.Formulas.get(position).getName())){
+//                        MainActivity.Formulas.get(position).setLiked(false);
+//
+//                        break;
+//                    }
+//                }
+//                MainActivity.LikedFormulas.remove(likedFormulas.get(position));
+//
+//            }
+//            if(MainActivity.LikedFormulas.isEmpty()) {
+//                recyclerView.setVisibility(View.GONE);
+//            }
+//            else {
+//                recyclerView.setVisibility(View.VISIBLE);
+//                emptyFavs.setVisibility(View.GONE);
+//            }
+//            recyclerView.setAdapter(new LikeAdapter(context, MainActivity.LikedFormulas, recyclerView, emptyFavs));
+//
+//        });
 
     }
 

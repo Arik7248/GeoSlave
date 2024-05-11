@@ -79,10 +79,6 @@ public class LoginActivity extends AppCompatActivity {
                     login_password.setError("Enter password");
                     return;
                 }
-                if (!FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
-                    Toast.makeText(LoginActivity.this, "Mail is not verified", Toast.LENGTH_SHORT).show();
-                    return;
-                }
                 // Authenticate user with email and password
                 auth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -90,6 +86,12 @@ public class LoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     // Sign in success
+
+                                    if (!FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
+                                        Toast.makeText(LoginActivity.this, "Mail is not verified", Toast.LENGTH_SHORT).show();
+                                        FirebaseAuth.getInstance().signOut();
+                                        return;
+                                    }
                                     Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                     finish();

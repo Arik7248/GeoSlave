@@ -1,41 +1,44 @@
 package com.example.geoslave;
 
-
-import android.widget.ImageButton;
+import java.util.Objects;
 
 public class Formula {
-    String name;
-    int image, textSize;
-    boolean isLiked=false;
-    ImageButton likeBT;
+    private String name;
+    private int image;
+    private int textSize;
+    private String type;
+    private String URL;
+    private boolean isLiked;
 
-    public Formula(String name, int image, int textSize) {
+    // Constructor and getters/setters
+
+    public Formula(String name, int image, int textSize, String type, String URL) {
         this.name = name;
         this.image = image;
         this.textSize = textSize;
+        this.type = type;
+        this.URL = URL;
+        this.isLiked = false;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getImage() {
         return image;
     }
 
-    public void setImage(int image) {
-        this.image = image;
-    }
     public int getTextSize() {
         return textSize;
     }
 
-    public void setTextSize(int textsize) {
-        this.textSize = textsize;
+    public String getType() {
+        return type;
+    }
+
+    public String getURL() {
+        return URL;
     }
 
     public boolean isLiked() {
@@ -43,7 +46,19 @@ public class Formula {
     }
 
     public void setLiked(boolean liked) {
-        this.isLiked = liked;
+        isLiked = liked;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Formula formula = (Formula) o;
+        return Objects.equals(name, formula.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 }

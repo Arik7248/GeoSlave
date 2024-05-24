@@ -1,9 +1,12 @@
 package com.example.geoslave;
 
+import static com.example.geoslave.Logic.NetworkUtil.CheckNetwork;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.geoslave.Logic.NetworkUtil;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -37,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     public static  FirebaseDatabase database;
     public static GoogleSignInClient mGoogleSignInClient;
     public static  FirebaseUser user;
+    private Activity activity = this;
 
     int RC_SIGN_IN = 20;
 
@@ -60,6 +65,9 @@ public class LoginActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //jnji
+                CheckNetwork(getApplicationContext(), activity);
+                //jnji
                 Intent tosignup = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(tosignup);
             }
@@ -67,6 +75,9 @@ public class LoginActivity extends AppCompatActivity {
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //jnji
+                CheckNetwork(getApplicationContext(), activity);
+                //jnji
                 String email = login_email.getText().toString().trim();
                 String password = login_password.getText().toString().trim();
 
@@ -105,8 +116,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         //Google
+        //jnji
         googleAuth = findViewById(R.id.loginBT);
-
         database = FirebaseDatabase.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -117,6 +128,8 @@ public class LoginActivity extends AppCompatActivity {
         googleAuth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //jnji
+                CheckNetwork(getApplicationContext(), activity);
                 if (auth.getCurrentUser() != null) {
                     signOut();
                 } else {
@@ -124,7 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
+        //jnji
     }
 
     private void googleSignIn() {

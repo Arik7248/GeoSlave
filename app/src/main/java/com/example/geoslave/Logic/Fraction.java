@@ -22,6 +22,7 @@ public class Fraction {
         reduce();
     }
 
+
     public void add(int n) {
         add(new Fraction(n, 1));
     }
@@ -31,6 +32,7 @@ public class Fraction {
         denominator = denominator * fraction.denominator;
         reduce();
     }
+
 
     public void subtract(int n) {
         subtract(new Fraction(n, 1));
@@ -91,7 +93,8 @@ public class Fraction {
     //
     public Fraction(int numerator, int denominator) {
         if (denominator == 0) {
-            throw new IllegalArgumentException("Denominator cannot be zero");
+            //throw new IllegalArgumentException("Denominator cannot be zero");
+            return;
         }
         this.numerator = numerator;
         this.denominator = denominator;
@@ -102,21 +105,6 @@ public class Fraction {
         return (numerator*denominator<0?"-":"")+ Math.abs(numerator)+"/"+Math.abs(denominator);
     }
 
-    public void print() {
-        if(numerator % denominator == 0){
-            System.out.println(numerator/denominator);
-            return;
-        }
-        if (numerator / denominator == 0) {
-            System.out.println(" " + Math.abs(numerator));
-            System.out.println((numerator*denominator<0?"-":" ")+" ---- или "+ 1.0 * numerator / denominator);
-            System.out.println(" " + Math.abs(denominator));
-        } else {
-            System.out.println(" " + Math.abs(numerator % denominator));
-            System.out.println((numerator*denominator<0?"-":"")+numerator / denominator + "---- или"+1.0 * numerator / denominator);
-            System.out.println(" " + Math.abs(denominator));
-        }
-    }
 
     private int getGCD(int a, int b) {
         return b == 0 ? a : getGCD(b, a % b);

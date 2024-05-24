@@ -4,23 +4,33 @@
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/jamanakavoricon"
+        android:icon="@drawable/geo_icon"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/jamanakavoricon"
+        android:roundIcon="@drawable/geo_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.GeoSlave"
         tools:targetApi="31">
         <activity
+            android:name=".NoInternetActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"  />
+        <activity
             android:name=".SignUpActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".FormulaActivity"
             android:exported="false"

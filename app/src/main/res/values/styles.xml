@@ -10,4 +10,8 @@
     <style name="SquareEditTextStyle" parent="Widget.AppCompat.EditText">
         <item name="android:background">@drawable/square_edittext_background</item>
     </style>
+    <style name="CustomDialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
 </resources>

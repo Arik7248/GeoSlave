@@ -32,6 +32,9 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:adjustViewBounds="true"
+            android:foreground="@drawable/selector_card"
+            android:clickable="true"
+            android:focusable="true"
             android:scaleType="fitXY" />
 
         <ImageButton

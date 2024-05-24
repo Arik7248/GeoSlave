@@ -22,7 +22,7 @@
         <View
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/jamanakavoricon" />
+            android:background="@drawable/geo_icon" />
 
         <TextView
             android:layout_width="wrap_content"

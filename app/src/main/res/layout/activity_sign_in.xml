@@ -28,6 +28,8 @@
         android:layout_marginTop="292dp"
         android:layout_marginEnd="55dp"
         android:hint="Enter your mail"
+        android:textColor="@color/txtcolor2"
+        android:textColorHint="@color/cardfon"
         android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +44,8 @@
         android:layout_marginEnd="55dp"
         android:hint="Enter your password"
         android:maxLines="1"
+        android:textColor="@color/txtcolor2"
+        android:textColorHint="@color/cardfon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mail" />
@@ -55,6 +59,8 @@
         android:layout_marginEnd="55dp"
         android:hint="Confirm your password"
         android:maxLines="1"
+        android:textColor="@color/txtcolor2"
+        android:textColorHint="@color/cardfon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pass1" />

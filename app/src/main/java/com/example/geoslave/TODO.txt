@@ -1,11 +1,22 @@
 ERRORS
 
-0_0 1)Verification is not verifying
-2)All liked formulas in all users
-3)Liked formula's heart is not red
-
 TODO
 
 1)Better UI
-2)Good FormulaActivity
-3)Strings for all formulas
+4)Nkarnery internetic harmar qashvi
+6)OnCLick cardimage, seriya darnum menak nkary
+
+Really Need ToDo
+
+DONE 1)Change bardzrutyan(a,b,c) u zugaheragci(teqel u poqracnel) u sinusneri(toxnel menak alfa a R) images.
+DONE 2)Delete Polygons,AreaByOneSidesTwoAngles
+DONE 3)3 4 5 6 brahmagupta gives 0
+DONE 4)CheckNetwork()
+DONE 5)AreaOfTrapezoid Does not work
+DONE 6)UnLike from liked formulas
+DONE 7)Copied formulas
+DONE 8)Ete qashelu ban chlni draca linelu Vardanin dur chekac qaqy
+DONE 9)SignOut color
+DONE 10)MainActivityum gesh zaderjkova mnacacy bacvum, endahnrapesa zaderjka
+DONE 11)Check On Planchet
+                                    Refresh presentation

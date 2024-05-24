@@ -1,8 +1,11 @@
 package com.example.geoslave;
 
+import static com.example.geoslave.Logic.NetworkUtil.CheckNetwork;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.Button;
@@ -13,6 +16,7 @@ import android.view.View;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 
+import com.example.geoslave.Logic.NetworkUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -21,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SignUpActivity extends AppCompatActivity {
     private EditText rg_username, rg_email, rg_password, rg_repassword;
     private Button rg_signup;
+    private Activity activity = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +43,9 @@ public class SignUpActivity extends AppCompatActivity {
         rg_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //jnji
+                CheckNetwork(getApplicationContext(), activity);
+                //jnji
                 String emaill = rg_email.getText().toString();
                 String Password = rg_password.getText().toString();
                 String cPassword = rg_repassword.getText().toString();

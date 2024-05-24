@@ -8,6 +8,8 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.geoslave.Logic.NetworkUtil;
+
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
     private static final int SPLASH_TIME_OUT = 1500;
@@ -18,7 +20,12 @@ public class SplashActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+            if (NetworkUtil.isNetworkConnected(this)) {
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+            } else {
+                startActivity(new Intent(SplashActivity.this, NoInternetActivity.class));
+            }
+
             finish();
         }, SPLASH_TIME_OUT);
     }

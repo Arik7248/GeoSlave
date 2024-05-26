@@ -51,6 +51,17 @@
         android:layout_height="wrap_content"
         android:src="@drawable/answer_background"
         android:adjustViewBounds="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:backgroundTint="@color/black" />
+    <ImageView
+        android:id="@+id/FormulaFormula"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/heronform"
+        android:adjustViewBounds="true"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="4dp"
@@ -77,6 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="q = "
+            android:maxLines="1"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:layout_marginTop="5dp"/>
@@ -105,6 +117,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="q = "
+                    android:maxLines="1"
                     android:textColor="@color/white"
                     android:textSize="25sp"
                     android:layout_marginTop="5dp"/>
@@ -133,6 +146,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="q = "
+                    android:maxLines="1"
                     android:textColor="@color/white"
                     android:textSize="25sp"
                     android:layout_marginTop="5dp"/>
@@ -160,6 +174,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="q = "
+                    android:maxLines="1"
                     android:textColor="@color/white"
                     android:textSize="25sp"
                     android:layout_marginTop="5dp"/>
@@ -187,6 +202,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="q = "
+                    android:maxLines="1"
                     android:textColor="@color/white"
                     android:textSize="25sp"
                     android:layout_marginTop="5dp"/>

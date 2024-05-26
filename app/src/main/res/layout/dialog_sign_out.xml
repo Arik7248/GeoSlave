@@ -1,0 +1,59 @@
+<!-- res/layout/dialog_sign_out.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/rounded_dialog_background">
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Out"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-medium" />
+
+    <TextView
+        android:id="@+id/dialog_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Are you sure you want to sign out?"
+        android:textSize="16sp"
+        android:textColor="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:id="@+id/dialog_negative_button"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:text="Cancel"
+            android:background="@drawable/rounded_button_background"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:padding="8dp"
+            android:layout_marginEnd="5dp"/>
+
+        <Button
+            android:id="@+id/dialog_positive_button"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:text="Sign Out"
+            android:background="@drawable/rounded_button_background"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:padding="8dp"
+            android:layout_marginStart="5dp"/>
+    </LinearLayout>
+</LinearLayout>

@@ -15,6 +15,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,7 +37,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import androidx.core.content.ContextCompat;
 
 public class LoginActivity extends AppCompatActivity {
-    ImageButton googleAuth;
+    ImageView googleAuth;
     public static  FirebaseAuth auth;
     public static  FirebaseDatabase database;
     public static GoogleSignInClient mGoogleSignInClient;
@@ -59,10 +60,12 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
         TextView signup = findViewById(R.id.signup);
+        TextView elisignup = findViewById(R.id.eselasignup);
         Button signin = findViewById(R.id.signin);
         EditText login_email = findViewById(R.id.name);
         EditText login_password = findViewById(R.id.pass);
-        signup.setOnClickListener(new View.OnClickListener() {
+
+        View.OnClickListener signUpListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //jnji
@@ -71,7 +74,9 @@ public class LoginActivity extends AppCompatActivity {
                 Intent tosignup = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(tosignup);
             }
-        });
+        };
+        signup.setOnClickListener(signUpListener);
+        elisignup.setOnClickListener(signUpListener);
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -173,7 +178,7 @@ public class LoginActivity extends AppCompatActivity {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuth(account.getIdToken());
             } catch (Exception e) {
-                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
     }

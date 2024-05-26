@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Formula {
     private String name;
-    private int image;
+    private int image,fimage;
     private int textSize;
     private String type;
     private String URL;
@@ -12,9 +12,10 @@ public class Formula {
 
     // Constructor and getters/setters
 
-    public Formula(String name, int image, int textSize, String type, String URL) {
+    public Formula(String name, int image, int fimage, int textSize, String type, String URL) {
         this.name = name;
         this.image = image;
+        this.fimage = fimage;
         this.textSize = textSize;
         this.type = type;
         this.URL = URL;
@@ -27,6 +28,9 @@ public class Formula {
 
     public int getImage() {
         return image;
+    }
+    public int getFImage() {
+        return fimage;
     }
 
     public int getTextSize() {

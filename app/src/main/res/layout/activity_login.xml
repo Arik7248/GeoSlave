@@ -1,108 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fon"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
 
     <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="85dp"
-        android:layout_marginBottom="100dp"
         android:text="Sign In"
         android:textColor="@color/txtcolor"
         android:textSize="35sp"
-        app:layout_constraintBottom_toTopOf="@+id/name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:gravity="center"
+        android:layout_marginTop="150dp"/>
 
     <EditText
         android:id="@+id/name"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginEnd="55dp"
-        android:layout_marginBottom="29dp"
         android:hint="Enter your mail"
         android:maxLines="1"
         android:textColor="@color/txtcolor2"
         android:textColorHint="@color/cardfon"
-        app:layout_constraintBottom_toTopOf="@+id/pass"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        android:drawableLeft="@drawable/email_vector"
+        android:layout_marginTop="70dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:padding="10dp"/>
 
     <EditText
         android:id="@+id/pass"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginEnd="55dp"
-        android:layout_marginBottom="43dp"
         android:hint="Enter password"
         android:maxLines="1"
         android:textColor="@color/txtcolor2"
         android:textColorHint="@color/cardfon"
-        app:layout_constraintBottom_toTopOf="@+id/signin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
-
+        android:drawableLeft="@drawable/lock_vector"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:padding="10dp"/>
 
     <Button
         android:id="@+id/signin"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="24dp"
         android:backgroundTint="@color/txtcolor"
         android:text="Sign In"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
-        app:layout_constraintStart_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/pass" />
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:padding="10dp"/>
 
     <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
+        android:id="@+id/eselasignup"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
         android:text="Or Click Here To"
         android:textColor="@color/txtcolor"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/signup"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signin" />
+        android:gravity="center"
+        android:layout_marginTop="60dp"/>
 
     <TextView
         android:id="@+id/signup"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginBottom="14dp"
         android:text="Sign Up"
         android:textColor="@color/txtcolor"
         android:textSize="25sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/loginBT"
-        app:layout_constraintStart_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        android:gravity="center"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/loginBT"
-        android:layout_width="0dp"
-        android:layout_height="180dp"
-        android:layout_marginBottom="3dp"
-        android:background="@drawable/signup"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signup" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/signup"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="55dp"/>
+</LinearLayout>

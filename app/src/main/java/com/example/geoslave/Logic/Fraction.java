@@ -115,4 +115,5 @@ public class Fraction {
         numerator/=t;
         denominator/=t;
     }
+
 }

@@ -80,6 +80,7 @@ public class LikeAdapter extends RecyclerView.Adapter<LikeAdapter.ViewHolder>{
                 Intent intent = new Intent(context, FormulaActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("MyFormulaImage",likedFormulas.get(position).getImage());
+                intent.putExtra("MyFormulaFormulaImage",likedFormulas.get(position).getFImage());
                 intent.putExtra("MyFormulaName",likedFormulas.get(position).getName());
                 intent.putExtra("MyFormulaURL",likedFormulas.get(position).getURL());
                 intent.putExtra("MyFormulaType",likedFormulas.get(position).getType());

@@ -121,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
                         LikedFormulas = ((List<Map>) data.get("LikedFormulas")).stream().map(el ->
                                         new Formula((String) el.get("name"),
                                                 Math.toIntExact((Long) el.get("image")),
+                                                Math.toIntExact((Long) el.get("fimage")),
                                                 Math.toIntExact((Long) el.get("textSize")),
                                                 (String) el.get("type"),
                                                 (String) el.get("URL")))
@@ -194,30 +195,30 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     private void CreateFormulas(){
-        TrianglesFormulasS.add(new Formula("Heron's Formula",R.drawable.heron,15,"Heron","https://en.wikipedia.org/wiki/Heron%27s_formula"));
-        TrianglesFormulasS.add(new Formula("Area By height and side",R.drawable.bardzrutyuntomakeres,12,"AreaByHeightAndSide","https://en.wikipedia.org/wiki/Area_of_a_triangle#"));
-        TrianglesFormulasS.add(new Formula("Area By Two Sides One Angle",R.drawable.areaby2sides1angle,11,"AreaByTwoSidesOneAngle","https://en.wikipedia.org/wiki/Area_of_a_triangle#Using_trigonometry"));
+        TrianglesFormulasS.add(new Formula("Heron's Formula",R.drawable.heron,R.drawable.heronform, 15 ,"Heron","https://en.wikipedia.org/wiki/Heron%27s_formula"));
+        TrianglesFormulasS.add(new Formula("Area By height and side",R.drawable.bardzrutyuntomakeres,R.drawable.bardzrutyuntomakeresform,12,"AreaByHeightAndSide","https://en.wikipedia.org/wiki/Area_of_a_triangle#"));
+        TrianglesFormulasS.add(new Formula("Area By Two Sides One Angle",R.drawable.areaby2sides1angle,R.drawable.areaby2sides1angleform,11,"AreaByTwoSidesOneAngle","https://en.wikipedia.org/wiki/Area_of_a_triangle#Using_trigonometry"));
         //TrianglesFormulasS.add(new Formula("Area By One Side Two Angles",R.drawable.areaby1side2angles,11,"AreaByOneSideTwoAngles","https://en.wikipedia.org/wiki/Area_of_a_triangle#Using_trigonometry"));
-        TrianglesFormulasS.add(new Formula("Area By Incircle",R.drawable.areabyincircle,13,"AreaByIncircle","https://en.wikipedia.org/wiki/Incircle_and_excircles#Incircle_and_its_radius_properties"));
-        TrianglesFormulasS.add(new Formula("Area By Excircle",R.drawable.areabyexcircle,13,"AreaByExcirle","https://en.wikipedia.org/wiki/Incircle_and_excircles#Exradii"));
+        TrianglesFormulasS.add(new Formula("Area By Incircle",R.drawable.areabyincircle,R.drawable.areabyincircleform,13,"AreaByIncircle","https://en.wikipedia.org/wiki/Incircle_and_excircles#Incircle_and_its_radius_properties"));
+        TrianglesFormulasS.add(new Formula("Area By Excircle",R.drawable.areabyexcircle,R.drawable.areabyexcircleform,13,"AreaByExcirle","https://en.wikipedia.org/wiki/Incircle_and_excircles#Exradii"));
         Formulas.addAll(TrianglesFormulasS);
-        TrianglesFormulasOther.add(new Formula("Formula of cosines",R.drawable.cosinusneri,14,"Cosines","https://en.wikipedia.org/wiki/Law_of_cosines"));
-        TrianglesFormulasOther.add(new Formula("Formula of sines",R.drawable.sinusneri,14,"Sines","https://en.wikipedia.org/wiki/Law_of_sines"));
-        TrianglesFormulasOther.add(new Formula("Height of a triangle",R.drawable.erankyunbardzrutyun,14,"Height","https://en.wikipedia.org/wiki/Triangle#Area"));
-        TrianglesFormulasOther.add(new Formula("Bisector of a triangle",R.drawable.erankyunkisord,14,"Bisector","https://en.wikipedia.org/wiki/Angle_bisector_theorem#Length_of_the_angle_bisector"));
-        TrianglesFormulasOther.add(new Formula("Median of a triangle",R.drawable.erankyunmijnagic,14,"Median","https://en.wikipedia.org/wiki/Median_(geometry)#Formulas_involving_the_medians'_lengths"));
+        TrianglesFormulasOther.add(new Formula("Formula of cosines",R.drawable.cosinusneri,R.drawable.cosinusneriform,14,"Cosines","https://en.wikipedia.org/wiki/Law_of_cosines"));
+        TrianglesFormulasOther.add(new Formula("Formula of sines",R.drawable.sinusneri,R.drawable.sinusneriform,14,"Sines","https://en.wikipedia.org/wiki/Law_of_sines"));
+        TrianglesFormulasOther.add(new Formula("Height of a triangle",R.drawable.erankyunbardzrutyun,R.drawable.erankyunbardzrutyunform,14,"Height","https://en.wikipedia.org/wiki/Triangle#Area"));
+        TrianglesFormulasOther.add(new Formula("Bisector of a triangle",R.drawable.erankyunkisord,R.drawable.erankyunkisordform,14,"Bisector","https://en.wikipedia.org/wiki/Angle_bisector_theorem#Length_of_the_angle_bisector"));
+        TrianglesFormulasOther.add(new Formula("Median of a triangle",R.drawable.erankyunmijnagic,R.drawable.erankyunmijnagicform,14,"Median","https://en.wikipedia.org/wiki/Median_(geometry)#Formulas_involving_the_medians'_lengths"));
         Formulas.addAll(TrianglesFormulasOther);
-        QuadrilateralsFormulas.add(new Formula("Brahmagupta's Formula",R.drawable.qarankyunbrah,13,"Brahmagupt","https://en.wikipedia.org/wiki/Brahmagupta%27s_formula"));
-        QuadrilateralsFormulas.add(new Formula("Area Of A Trapezoid By Sides",R.drawable.sexanmakeres,11,"AreaOfATrapezoidBySides","https://en.wikipedia.org/wiki/Trapezoid#Area"));
-        QuadrilateralsFormulas.add(new Formula("Area Of A Parallelogram",R.drawable.zugankqarakusinerigumar,12,"AreaOfAParallelogram","https://en.wikipedia.org/wiki/Parallelogram#Area_formula"));
+        QuadrilateralsFormulas.add(new Formula("Brahmagupta's Formula",R.drawable.qarankyunbrah,R.drawable.qarankyunbrahform,13,"Brahmagupt","https://en.wikipedia.org/wiki/Brahmagupta%27s_formula"));
+        QuadrilateralsFormulas.add(new Formula("Area Of A Trapezoid By Sides",R.drawable.sexanmakeres,R.drawable.sexanmakeresform,11,"AreaOfATrapezoidBySides","https://en.wikipedia.org/wiki/Trapezoid#Area"));
+        QuadrilateralsFormulas.add(new Formula("Area Of A Parallelogram",R.drawable.zugankqarakusinerigumar,R.drawable.zugankqarakusinerigumarform,12,"AreaOfAParallelogram","https://en.wikipedia.org/wiki/Parallelogram#Area_formula"));
         Formulas.addAll(QuadrilateralsFormulas);
 //        PolygonFormulas.add(new Formula("Area Of A Polygon",R.drawable.mnogougolnikarea,14,"AreaOfAPolygon","https://en.wikipedia.org/wiki/Regular_polygon#Area"));
 //        PolygonFormulas.add(new Formula("Radius Of Excircle",R.drawable.mnogougolnikexcirle,13,"PolygonRadiusOfExcircle","https://www.mathopenref.com/polygoncircumcircle.html"));
 //        PolygonFormulas.add(new Formula("Radius Of Incircle",R.drawable.mnogougolnikincircle,14,"PolygonRadiusOfIncircle","https://www.mathopenref.com/polygonincircle.html"));
 //        Formulas.addAll(PolygonFormulas);
-        CircleFormulas.add(new Formula("Area Of A Circle Sector",R.drawable.shrjanisektor,13,"AreaSector","https://en.wikipedia.org/wiki/Circular_sector#Area"));
+        CircleFormulas.add(new Formula("Area Of A Circle Sector",R.drawable.shrjanisektor,R.drawable.shrjanisektorform,13,"AreaSector","https://en.wikipedia.org/wiki/Circular_sector#Area"));
         //CircleFormulas.add(new Formula("Area Of A Circle Segment",R.drawable.shrjanisegment,12,"AreaSegment","https://en.wikipedia.org/wiki/Circular_segment#Arc_length_and_area"));
-        CircleFormulas.add(new Formula("Height Of A Circle Segment",R.drawable.shrjanisegmentibardz,11,"HeightSegment","https://en.wikipedia.org/wiki/Circular_segment#Chord_length_and_height"));
+        CircleFormulas.add(new Formula("Height Of A Circle Segment",R.drawable.shrjanisegmentibardz,R.drawable.shrjanisegmentibardzform,11,"HeightSegment","https://en.wikipedia.org/wiki/Circular_segment#Chord_length_and_height"));
     }
     private void showSignOutConfirmationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.CustomDialog);

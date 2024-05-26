@@ -80,6 +80,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
                 Intent intent = new Intent(context, FormulaActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("MyFormulaImage",formulas.get(position).getImage());
+                intent.putExtra("MyFormulaFormulaImage",formulas.get(position).getFImage());
                 intent.putExtra("MyFormulaName",formulas.get(position).getName());
                 intent.putExtra("MyFormulaURL",formulas.get(position).getURL());
                 intent.putExtra("MyFormulaType",formulas.get(position).getType());

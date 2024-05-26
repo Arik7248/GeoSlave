@@ -6,6 +6,7 @@ TODO
 4)Nkarnery internetic harmar qashvi
 6)OnCLick cardimage, seriya darnum menak nkary
 
+
 Really Need ToDo
 
 DONE 1)Change bardzrutyan(a,b,c) u zugaheragci(teqel u poqracnel) u sinusneri(toxnel menak alfa a R) images.
@@ -19,4 +20,14 @@ DONE 8)Ete qashelu ban chlni draca linelu Vardanin dur chekac qaqy
 DONE 9)SignOut color
 DONE 10)MainActivityum gesh zaderjkova mnacacy bacvum, endahnrapesa zaderjka
 DONE 11)Check On Planchet
-                                    Refresh presentation
+DONE 12)Login and Sign Up Design
+DONE 13)sin and cos problems
+DONE 14)(2+0.5)toshni chi (2+1/2)toshnia
+DONE 15)Error handler shows to user
+DONE 16)06/03
+DONE 17)Equal Distance in a,b,c,d...
+DONE 18)photos for all formulas
+DONE 19)Check Trapezoid
+DONE 20)pi in answer
+DONE 21)bzbzal
+ДАННН                 Refresh presentation(2rd mas nkar mejnel (2+0.5-1/2))

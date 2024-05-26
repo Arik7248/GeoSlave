@@ -9,8 +9,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
@@ -28,6 +30,8 @@ import com.example.geoslave.Logic.Fraction;
 import com.example.geoslave.Logic.NetworkUtil;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import java.util.Objects;
+
 public class FormulaActivity extends AppCompatActivity {
 
     private EditText[] editTexts;
@@ -38,9 +42,10 @@ public class FormulaActivity extends AppCompatActivity {
     EditText editText;
     private Activity activity = this;
     public static boolean isUnderSqrt = false;
-    boolean IsItOk;
+    String[] IsItOk = {"",""};
     String Expression;
     String[] mas,symb;
+    public static boolean RightSqrt = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +56,10 @@ public class FormulaActivity extends AppCompatActivity {
 
         ImageView image = findViewById(R.id.FormulaImage);
         TextView name = findViewById(R.id.Name);
+        ImageView formImage = findViewById(R.id.FormulaFormula);
         name.setText(getIntent().getStringExtra("MyFormulaName" ));
         image.setImageResource(getIntent().getIntExtra("MyFormulaImage",R.drawable.answer_background));
+        formImage.setImageResource(getIntent().getIntExtra("MyFormulaFormulaImage",R.drawable.heronform));
 
         ImageView infoBT = findViewById(R.id.InfoBT);
         infoBT.setOnClickListener(new View.OnClickListener() {
@@ -89,12 +96,20 @@ public class FormulaActivity extends AppCompatActivity {
         //
         Enum.FormulasEnum type = Enum.FormulasEnum.valueOf(getIntent().getStringExtra("MyFormulaType"));
         SetExpressionName(type);
-
+        //w
+        int widthwithdp = 50;
+        int widthwithpx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,widthwithdp,getResources().getDisplayMetrics());
+        //w
         count = symb.length;
         mas = new String[count];
         for (int i = 0; i < count; i++) {
             setupEditTextListener(editTexts[i], i);
             textViews[i].setText(symb[i]+" = ");
+            if (symb[i].length() == 1 || symb[i].length() == 2){
+                ViewGroup.LayoutParams params = textViews[i].getLayoutParams();
+                params.width = widthwithpx;
+                textViews[i].setLayoutParams(params);
+            }
         }
         for (int i = 4; i >= count;i--){
             linearLayouts[i].setVisibility(View.GONE);
@@ -114,26 +129,63 @@ public class FormulaActivity extends AppCompatActivity {
                 for (int i = 0;i < count;i++){
                     mas[i] = String.valueOf(editTexts[i].getText());
                     try {
-                        double number = Double.valueOf(mas[i]);
+                        if (!mas[i].contains(".") && mas[i].matches("^-?0\\d*$")) {
+                            throw new Exception("Invalid input format: " + mas[i]);
+                        }
+
+                        // Check if the input represents a decimal (contains a decimal point)
+                        if (mas[i].contains(".")) {
+                            // Split the input into integer and decimal parts
+                            String[] parts = mas[i].split("\\.");
+                            // Check if the integer part has leading zeros
+                            if (parts[0].matches("^-?0\\d*$")) {
+                                throw new Exception("Invalid input format: " + mas[i]);
+                            }
+                        }
+                        double number = Double.parseDouble(mas[i]);
                         mas[i] = DoubleToFraction(number);
                     }catch (Exception ignored){
-
+                        if (calculate(mas[i], getApplicationContext()) != null){
+                            Fraction temp = calculate(mas[i], getApplicationContext());
+                            mas[i] = temp.toString();
+                        }else{
+                            if (RightSqrt) {
+                                Toast.makeText(FormulaActivity.this, "Invalid data", Toast.LENGTH_SHORT).show();
+                            }
+                            if (!RightSqrt){
+                                Toast.makeText(FormulaActivity.this, "Sqrt(x) should be integer", Toast.LENGTH_SHORT).show();
+                            }
+                            return;
+                        }
                     }
                     TempSTR = TempSTR.replaceAll(symb[i], mas[i]);
-                }
+                }//(5/2 * 2/1)/2
                 SetIsItOk(type);
-                if(IsItOk){
+                if(Objects.equals(IsItOk[0], "true")){
                     if (calculate(TempSTR, getApplicationContext()) != null){
                         Fraction result = calculate(TempSTR, getApplicationContext());
                         if(printStr(result).contains("-") || printStr(result).equals("Result: 0")) {
-                            Toast.makeText(FormulaActivity.this, "Invalid data", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(FormulaActivity.this, "Not Correct Data", Toast.LENGTH_SHORT).show();
                         }else{
-                            ansTV.setText(printStr(result));
+                            if (type == Enum.FormulasEnum.AreaSector){
+                                String[] strarr = printStr(result).split(" ");
+                                try {
+                                    ansTV.setText(strarr[0]+" π"+strarr[1]);
+                                }
+                                catch (Exception e){
+                                    Toast.makeText(FormulaActivity.this, "Something is Wrong", Toast.LENGTH_SHORT).show();
+                                }
+                            }else{
+                                ansTV.setText(printStr(result));
+                            }
+
                         }
                         isUnderSqrt = false;
+                    }else{
+                        Toast.makeText(FormulaActivity.this, "Something is Wrong", Toast.LENGTH_SHORT).show();
                     }
                 }else{
-                    Toast.makeText(FormulaActivity.this, "Invalid data", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FormulaActivity.this, IsItOk[1], Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -171,7 +223,7 @@ public class FormulaActivity extends AppCompatActivity {
                 break;
             case Cosines:
                 symb = new String[]{"b", "c", "α"};
-                Expression ="sqrt(b * b + c * c - 2 * b * c * α)";
+                Expression ="sqrt(b * b + c * c - 2 * b * c * (α))";
                 break;
             case Sines:
                 symb = new String[]{"a", "α"};
@@ -217,7 +269,7 @@ public class FormulaActivity extends AppCompatActivity {
                 Expression ="a/(2 * α)";
                 break;
             case AreaSector://π
-                symb = new String[]{"R", "α°"};
+                symb = new String[]{"R", "α"};
                 Expression ="(R * R) * (α/360)";
                 break;
             case AreaSegment://π
@@ -252,7 +304,7 @@ public class FormulaActivity extends AppCompatActivity {
                 Expression ="(c * c)/2 * (α * β)/γ";
                 break;
             case AreaByIncircle:
-                symb = new String[]{"P", "r"};
+                symb = new String[]{"p", "r"};
                 Expression ="(P * r)/2";
                 break;
             case AreaByExcirle:
